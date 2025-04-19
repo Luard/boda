@@ -175,6 +175,8 @@ const t = translations[lang as SupportedLanguages];
                       invitationContent.style.overflow = 'visible';
                       document.body.style.overflow = 'auto';
                       document.body.style.height = 'auto';
+                      document.body.style.overflowX = 'hidden';
+                      invitationContent.style.overflowX = 'hidden';
                       
                       // Update URL hash if it wasn't already set
                       if (window.location.hash !== '#open') {
