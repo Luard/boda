@@ -1,0 +1,168 @@
+---
+import { translations } from '../../i18n/translations';
+
+type SupportedLanguages = keyof typeof translations;
+const { lang = 'es' } = Astro.props;
+const t = translations[lang as SupportedLanguages];
+---
+
+<section class="section section-rsvp" id="rsvp">
+  <div class="content fade-in">
+    <div class="rsvp-container">
+      <div class="rsvp-message">
+        <p class="script-text">
+          Esperamos que puedas compartir con nosotros este momento tan especial
+        </p>
+      </div>
+      
+      <div class="rsvp-form-container">
+        <h3>Confirma tu asistencia</h3>
+        <form class="rsvp-form" id="rsvp-form">
+          <div class="form-group">
+            <input type="text" id="name" name="name" placeholder="Nombre completo" required>
+          </div>
+          
+          <div class="form-group">
+            <input type="email" id="email" name="email" placeholder="Email" required>
+          </div>
+          
+          <div class="form-group">
+            <select id="attendance" name="attendance" required>
+              <option value="" disabled selected>¿Asistirás?</option>
+              <option value="yes">Sí, asistiré</option>
+              <option value="no">No podré asistir</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <textarea id="message" name="message" placeholder="Mensaje (opcional)"></textarea>
+          </div>
+          
+          <div class="form-group">
+            <button type="submit" class="submit-button">Confirmar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('rsvp-form');
+    
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      // Aquí puedes agregar la lógica para enviar el formulario
+      // Por ejemplo, usando fetch para enviar a un endpoint
+      
+      alert('¡Gracias por confirmar tu asistencia!');
+      form.reset();
+    });
+  });
+</script>
+
+<style>
+  .section-rsvp {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .rsvp-container {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .rsvp-message {
+    margin-bottom: 3rem;
+  }
+
+  .script-text {
+    font-family: 'Better Saturday Personal Use', cursive;
+    font-size: 2.5rem;
+    line-height: 1.4;
+    color: #333;
+    margin: 0 auto;
+  }
+
+  .rsvp-form-container {
+    background-color: white;
+    padding: 2.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    margin-top: 2rem;
+  }
+
+  h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: var(--secondary-color);
+    font-family: 'Italiana', serif;
+  }
+
+  .rsvp-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .form-group {
+    width: 100%;
+  }
+
+  input, select, textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease;
+  }
+
+  textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+  }
+
+  .submit-button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    font-family: 'Italiana', serif;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .submit-button:hover {
+    background-color: var(--secondary-color);
+  }
+
+  @media (max-width: 768px) {
+    .script-text {
+      font-size: 1.3rem;
+    }
+
+    .rsvp-form-container {
+      padding: 1.5rem;
+    }
+
+    h3 {
+      font-size: 1.3rem;
+    }
+  }
+</style>

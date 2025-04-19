@@ -1,0 +1,174 @@
+---
+import { translations } from '../../i18n/translations';
+
+type SupportedLanguages = keyof typeof translations;
+const { lang = 'es' } = Astro.props;
+const t = translations[lang as SupportedLanguages];
+---
+
+<section class="section section-dress-code" id="dress-code">
+  <div class="content fade-in">
+    <h2>Dress code</h2>
+
+    <div class="dress-code-container">
+      <div class="dress-code-icons">
+        <div class="icon-row">
+          <div class="icon-item">
+            <div class="dress-icon">
+              <img src="/images/dress.svg" alt="Dress" />
+            </div>
+          </div>
+          
+          <div class="text-item">
+            <h3>Formal</h3>
+            <p class="dress-code-description">Usa tu mejor look!</p>
+          </div>
+          
+          <div class="icon-item">
+            <div class="suit-icon">
+              <img src="/images/suit.svg" alt="Suit" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-dress-code {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 100vh;
+  }
+
+  h2 {
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+    color: var(--secondary-color);
+    text-align: center;
+    font-family: 'Better Saturday Personal Use', cursive;
+  }
+
+  .dress-code-container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .dress-code-icons {
+    width: 100%;
+  }
+
+  .icon-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
+  }
+
+  .text-item {
+    order: -1;
+    margin-bottom: 1rem;
+  }
+
+  .icon-item {
+    width: 100%;
+    max-width: 100px;
+  }
+
+  .dress-icon img, .suit-icon img {
+    width: 100%;
+    height: auto;
+  }
+
+  h3 {
+    font-size: 2rem;
+    color: #333;
+    font-family: 'Italiana', serif;
+  }
+
+  .dress-code-description {
+    font-size: 1.5rem;
+    margin-top: 0.8rem;
+    color: var(--text-color);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+  }
+
+  /* Media queries para tablets y escritorio */
+  @media (min-width: 768px) {
+    .section-dress-code {
+      padding: 3rem 2rem;
+      height: 100vh;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .icon-row {
+      flex-direction: row;
+      justify-content: center;
+      gap: 3rem;
+    }
+
+    .text-item {
+      order: 0;
+      margin-bottom: 0;
+    }
+
+    .icon-item {
+      max-width: 180px;      
+    }
+
+    h3 {
+      font-size: 2.2rem;
+    }
+
+    .dress-code-description {
+      font-size: 1.7rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .section-dress-code {
+      height: 100vh;
+    }
+
+    h2 {
+      font-size: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .icon-row {
+      gap: 5rem;
+    }
+
+    .icon-item {
+      max-width: 220px;
+    }
+
+    h3 {
+      font-size: 2.5rem;
+    }
+
+    .dress-code-descriptions {
+      visibility: hidden;
+    }
+
+    .dress-code-description {
+      font-size: 2rem;
+      margin-top: 1.5rem;
+    }
+
+    .dress-icon .suit-icon {
+      max-width: 100px;
+      background-color: red;
+    }
+  }
+</style>
