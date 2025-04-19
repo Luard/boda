@@ -3,6 +3,5 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-    site: 'https://luard.github.io',
-    base: '/boda/',
+    site: 'elbodorrio2025.com',
 });
