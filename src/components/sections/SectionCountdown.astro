@@ -8,8 +8,25 @@ const t = translations[lang as SupportedLanguages];
 
 <section class="section-intro">
   <div class="content fade-in">
-    <div class="invitation-text">
-      <p>{t['intro.invitation']}</p>
+    <h3 class="countdown-heading">{t['intro.countdown.heading']}</h3>
+    
+    <div class="countdown-container" id="countdown">
+      <div class="countdown-item">
+        <span class="countdown-number" id="days">000</span>
+        <span class="countdown-label">{t['intro.countdown.days']}</span>
+      </div>
+      <div class="countdown-item">
+        <span class="countdown-number" id="hours">00</span>
+        <span class="countdown-label">{t['intro.countdown.hours']}</span>
+      </div>
+      <div class="countdown-item">
+        <span class="countdown-number" id="minutes">00</span>
+        <span class="countdown-label">{t['intro.countdown.minutes']}</span>
+      </div>
+      <div class="countdown-item">
+        <span class="countdown-number" id="seconds">00</span>
+        <span class="countdown-label">{t['intro.countdown.seconds']}</span>
+      </div>
     </div>
   </div>
 </section>
@@ -72,8 +89,6 @@ const t = translations[lang as SupportedLanguages];
     min-width: 100%;
     min-height: 100vh;
     overflow: hidden;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
   }
 
   .invitation-text {
@@ -84,7 +99,7 @@ const t = translations[lang as SupportedLanguages];
   }
 
   .invitation-text p {
-    font-size: 2rem;
+    font-size: 1.4rem;
     line-height: 1.8;
     color: var(--text-color);
     font-style: italic;
@@ -94,7 +109,7 @@ const t = translations[lang as SupportedLanguages];
 
   .countdown-heading {
     font-family: 'Italiana', serif;
-    font-size: 2.5rem;
+    font-size: 5rem;
     margin-bottom: 2rem;
     color: var(--secondary-color);
     position: relative;
@@ -127,14 +142,14 @@ const t = translations[lang as SupportedLanguages];
   }
 
   .countdown-number {
-    font-size: 4rem;
+    font-size: 8rem;
     font-weight: bold;
     color: #333;
     font-family: 'Montserrat', sans-serif;
   }
 
   .countdown-label {
-    font-size: 1rem;
+    font-size: 2rem;
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-top: 0.5rem;
@@ -145,12 +160,11 @@ const t = translations[lang as SupportedLanguages];
 
   @media (max-width: 768px) {
     .invitation-text p {
-      margin-top: 2rem;
-      font-size: 1.4rem;
+      font-size: 1.1rem;
     }
 
     .countdown-heading {
-      font-size: 2rem;
+      font-size: 2.5rem;
     }
 
     .countdown-container {
@@ -158,7 +172,7 @@ const t = translations[lang as SupportedLanguages];
     }
 
     .countdown-number {
-      font-size: 2.5rem;
+      font-size: 3rem;
     }
 
     .countdown-label {
