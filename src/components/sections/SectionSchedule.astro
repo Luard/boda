@@ -20,7 +20,6 @@ const t = translations[lang as SupportedLanguages];
           </div>
         </div>
       </div>
-      
       <div class="timeline-item">
         <div class="timeline-content">
           <h3 class="event-time">19:30</h3>
@@ -56,8 +55,9 @@ const t = translations[lang as SupportedLanguages];
   }
 
   h2 {
+    margin-top: 1rem;
     font-size: 3rem;
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
     color: var(--secondary-color);
     text-align: center;
   }
@@ -105,24 +105,18 @@ const t = translations[lang as SupportedLanguages];
 
   .event-details {
     position: relative;
-    background-color: white;
     padding: 1.5rem;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     margin-left: 2rem;
     flex-grow: 1;
   }
 
   .event-details::before {
     content: '';
-    position: absolute;
-    left: -10px;
-    top: 20px;
     width: 20px;
     height: 20px;
     background-color: var(--primary-color);
     border-radius: 50%;
-    transform: translateX(-50%);
   }
 
   .event-title {
@@ -154,11 +148,11 @@ const t = translations[lang as SupportedLanguages];
     }
 
     .event-title {
-      font-size: 1.2rem;
+      font-size: 1rem;
     }
 
     .event-description {
-      font-size: 1rem;
+      font-size: 0.9rem;
     }
 
     h2 {

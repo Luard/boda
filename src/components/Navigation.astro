@@ -7,7 +7,13 @@ const { lang = 'es' } = Astro.props;
 const t = translations[lang as SupportedLanguages];
 ---
 
-<nav class="nav-menu white-bg sticky">
+
+<button id="nav-toggle" class="nav-toggle hidden" aria-label="Toggle navigation">
+  <span class="bar"></span>
+  <span class="bar"></span>
+  <span class="bar"></span>
+</button>
+<nav class="nav-menu white-bg sticky" id="main-nav">
   <LanguageSelector currentLang={lang} />
   <ul>
     <li><a href="#main">{t['nav.home']}</a></li>
@@ -21,22 +27,39 @@ const t = translations[lang as SupportedLanguages];
 
 
 <script>
+  let isMobile = window.innerWidth <= 768;
+
+  // Add toggle functionality
+  const navToggle = document.getElementById('nav-toggle');
+  const mainNav = document.getElementById('main-nav');
+
+  navToggle?.addEventListener('click', () => {
+    mainNav?.classList.toggle('visible');
+    navToggle.classList.toggle('active');
+  });
+
   const nav = document.querySelector('.nav-menu');
   const sections = document.querySelectorAll('.section');
   let isScrolling = false;
   let currentSectionIndex = 0;
   let touchStartY = 0;
   let touchEndY = 0;
-  let isMobile = window.innerWidth <= 768;
   let lastScrollTime = 0;
 
   // Función para inicializar la navegación correctamente
   function initializeNavigation() {
     if (nav) {
       if (window.location.hash === '#open') {
-        console.log(nav.className);
-        nav.classList.add('sticky');
-        nav.classList.add('visible');
+        navToggle?.classList.remove('hidden');
+        let isMobile = window.innerWidth <= 768;
+
+        if (isMobile) {
+          mainNav?.classList.remove('visible');
+          navToggle?.classList.remove('active');
+        } else {
+          nav.classList.add('visible');
+          navToggle?.classList.add('active');
+        }
       }
     }
     // Determinar la sección inicial basada en la posición de scroll
@@ -215,8 +238,52 @@ const t = translations[lang as SupportedLanguages];
 </script>
 
 <style>
-  .nav-menu {
+  /* Toggle button styles */
+  .nav-toggle {
     position: fixed;
+    top: 5px;
+    left: 20px;
+    z-index: 1001;
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .nav-toggle.hidden {
+    oppacity: 0;
+  }
+  .nav-toggle:hover {
+  }
+
+  .nav-toggle .bar {
+    width: 24px;
+    height: 2px;
+    background-color: var(--secondary-color);
+    transition: all 0.3s ease;
+    
+  }
+
+  .nav-toggle.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .nav-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .nav-toggle.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  .nav-menu {
     left: 0;
     right: 0;
     z-index: 1000;
@@ -226,11 +293,13 @@ const t = translations[lang as SupportedLanguages];
     pointer-events: none;
     transform: translateY(-20px);
     position: sticky;
+    display: flex;
+    justify-content: center;
   }
 
   .nav-menu.visible {
     opacity: 1;
-    pointer-events: auto; /* Cambiado de 'all' a 'auto' para mejor compatibilidad */
+    pointer-events: auto;
     transform: translateY(0);
   }
 
@@ -285,17 +354,32 @@ const t = translations[lang as SupportedLanguages];
     font-size: 1rem;
   }
 
+  nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+
   @media (max-width: 768px) {
+    .nav-toggle {
+      left: 5px;
+    }
+
+    .nav-menu {
+      padding: 1rem;
+      padding-left: 3rem;
+    }
+
     ul {
       gap: 1.5rem;
+
+      text-align: center;
+      line-height: 30%;
     }
 
-    a {
-      font-size: 1rem;
-    }
-
-    .nav-menu.visible {
-      display: none;
+    .sticky a {
+      font-size: 0.5rem;
     }
   }
 </style>

@@ -39,7 +39,7 @@ const t = translations[lang as SupportedLanguages];
         <div class="envelope-flap-shadow" />
         <div class="envelope-inside">
           <div id="envelope-content-preview" class="envelope-content-preview">
-            <SectionMain lang={lang} />
+            <div class="section preview-section"><SectionMain lang={lang} /></div>
             <!--<slot /> -->
           </div>
         </div>
@@ -190,9 +190,17 @@ const t = translations[lang as SupportedLanguages];
                       document.body.style.overflowX = 'hidden';
                       invitationContent.style.overflowX = 'hidden';
                       const navElement = document.querySelector('nav');
+                      const navToggle = document.querySelector('.nav-toggle');
                       if (navElement) {
-                        console.log("Entra aqui");
-                        navElement.classList.add('visible');
+                        navToggle?.classList.remove('hidden');
+
+                        let isMobile = window.innerWidth <= 768;
+                        if (isMobile) {
+                          navToggle?.classList.remove('active');
+                        } else {
+                          navElement?.classList.add('visible');
+                          navToggle?.classList.add('active');
+                        }
                       }
                       
                       // Update URL hash if it wasn't already set
@@ -229,6 +237,18 @@ const t = translations[lang as SupportedLanguages];
         invitationContent.classList.add('paper-effect');
         // Add staggered animation to child elements
         const children = invitationContent.children;
+        const navElement = document.querySelector('nav');
+        const navToggle = document.querySelector('.nav-toggle');
+        if (navElement) {
+          navToggle?.classList.remove('hidden');
+
+          let isMobile = window.innerWidth <= 768;
+          if (isMobile) {
+            navToggle?.classList.remove('active');
+          } else {
+            navToggle?.classList.add('active');
+          }
+        }
         for (let i = 0; i < children.length; i++) {
           children[i].style.opacity = '1';
           children[i].style.transform = 'translateY(0)';
@@ -407,7 +427,9 @@ const t = translations[lang as SupportedLanguages];
     pointer-events: none;
   }  
 
-  
+  .preview-section {
+    top:-12.5vh;
+  }
 
   .invitation-content .section {
     position: relative;
@@ -510,6 +532,10 @@ const t = translations[lang as SupportedLanguages];
       height: 120vw;
       top: -55vh;
       right: -50vw;
+    }
+
+    .preview-section {
+      top: -20vh;
     }
   }
 
@@ -1139,46 +1165,6 @@ const t = translations[lang as SupportedLanguages];
       transform: translateY(0);
     }
 
-  /* Fix for navigation */
-  nav {
-    position: sticky;
-    top: 0;
-    width: 100%;
-    z-index: 10;
-    background-color: var(--background-color);
-    display: flex;
-    justify-content: center;
-    padding: 1rem 0;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  }
-
-  /* Fix navigation items alignment */
-  nav ul {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    list-style: none;
-    gap: 2rem;
-    width: 100%;
-    max-width: 800px;
-    padding: 0 1rem;
-  }
-
-  nav li {
-    margin: 0;
-  }
-
-  nav a {
-    text-decoration: none;
-    color: var(--text-color);
-    font-weight: 500;
-    transition: color 0.3s ease;
-  }
-
-  nav a:hover {
-    color: var(--secondary-color);
-  }
-
   .hidden {
     display: none !important;
     opacity: 0;
@@ -1189,7 +1175,7 @@ const t = translations[lang as SupportedLanguages];
   .section {
     height: 100vh;
     scroll-snap-align: start;
-    padding: 1rem 1.5rem 1rem 1.5rem;
+    padding: 1rem 2rem 1rem 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
