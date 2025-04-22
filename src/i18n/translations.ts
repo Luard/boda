@@ -7,6 +7,9 @@ export const defaultLang = 'es';
 
 export const translations = {
   es: {
+    'meta.title':'Boda Luard y Nataly',
+    'meta.og.title':'¡ EL BODORRIO 2025 !',
+    'meta.og.description':'Boda Luard y Nataly. Acompañanos en el inicio de nuestra nueva historia.',
     'wedding.Luard': 'Luard',
     'wedding.y': 'y',
     'wedding.Nataly': 'Nataly',
@@ -68,6 +71,9 @@ export const translations = {
     "calendar.appointment": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Bodorrio%202025:%20Luard%20y%20Nataly&dates=20250911T173000/20250912T030000&location=Masia%20Piguillem,%20Carretera%20C-37,%20km.%20163,%2008572%20Sant%20Andreu%20de%20la%20Vola,%20Barcelona&details=¡Te%20esperamos%20en%20nuestra%20boda!",
   },
   ca: {
+    'meta.title':'Boda Luard i Nataly',
+    'meta.og.title':'EL BODORRIO 2025 !',
+    'meta.og.description':'Boda Luard i Nataly. Acompanya\'ns a l\'inici de la nostra nova història.',
     'nav.home': 'Inici',
     'nav.info': 'Informació',
     'nav.schedule': 'Programa',

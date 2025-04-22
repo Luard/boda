@@ -7,10 +7,10 @@ const { lang = 'es' } = Astro.props;
 const t = translations[lang as SupportedLanguages];
 ---
 
-<nav class="nav-menu white-bg">
+<nav class="nav-menu white-bg sticky">
   <LanguageSelector currentLang={lang} />
   <ul>
-    <li><a href="#inicio">{t['nav.home']}</a></li>
+    <li><a href="#main">{t['nav.home']}</a></li>
     <li><a href="#info">{t['nav.info']}</a></li>
     <li><a href="#schedule">{t['nav.schedule']}</a></li>
     <li><a href="#dress-code">{t['nav.dress-code']}</a></li>
@@ -33,19 +33,18 @@ const t = translations[lang as SupportedLanguages];
   // Función para inicializar la navegación correctamente
   function initializeNavigation() {
     if (nav) {
-      // Hacer visible la navegación inmediatamente si estamos en modo #open
       if (window.location.hash === '#open') {
+        console.log(nav.className);
         nav.classList.add('sticky');
         nav.classList.add('visible');
       }
     }
-    
     // Determinar la sección inicial basada en la posición de scroll
     updateCurrentSection();
   }
 
   // Ejecutar al cargar la página
-  document.addEventListener('DOMContentLoaded', initializeNavigation);
+  //document.addEventListener('DOMContentLoaded', initializeNavigation);
   
   // También ejecutar después de un breve retraso para asegurar que funcione en todos los casos
   setTimeout(initializeNavigation, 500);
@@ -226,6 +225,7 @@ const t = translations[lang as SupportedLanguages];
     opacity: 0;
     pointer-events: none;
     transform: translateY(-20px);
+    position: sticky;
   }
 
   .nav-menu.visible {
@@ -292,10 +292,6 @@ const t = translations[lang as SupportedLanguages];
 
     a {
       font-size: 1rem;
-    }
-
-    nav-menu {
-      display: none;
     }
 
     .nav-menu.visible {

@@ -6,7 +6,7 @@ const { lang = 'es' } = Astro.props;
 const t = translations[lang as SupportedLanguages];
 ---
 
-<section class="section section-intro">
+<section class="section-intro">
   <div class="content fade-in">
     <div class="invitation-text">
       <p>{t['intro.invitation']}</p>
@@ -86,9 +86,13 @@ const t = translations[lang as SupportedLanguages];
 <style>
   .section-intro {
     height: 100vh;
-    /*background-color: #f5f5f2;*/
-    padding: 4rem 2rem;
-    text-align: center;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
   }
 
   .invitation-text {
@@ -114,6 +118,7 @@ const t = translations[lang as SupportedLanguages];
     position: relative;
     font-weight: 400;
     letter-spacing: 1px;
+    text-align: center;
   }
 
   .countdown-heading::after {
@@ -123,7 +128,6 @@ const t = translations[lang as SupportedLanguages];
     left: 0;
     width: 100%;
     height: 1px;
-    background-color: var(--primary-color);
   }
 
   .countdown-container {

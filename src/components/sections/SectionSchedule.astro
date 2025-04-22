@@ -6,7 +6,7 @@ const { lang = 'es' } = Astro.props;
 const t = translations[lang as SupportedLanguages];
 ---
 
-<section class="section section-schedule" id="schedule">
+<section class="section-schedule">
   <div class="content fade-in">
     <h2>{t['schedule.title']}</h2>
     
@@ -45,8 +45,14 @@ const t = translations[lang as SupportedLanguages];
 
 <style>
   .section-schedule {
-    background-color: var(--background-color);
-    padding: 4rem 2rem;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
   }
 
   h2 {

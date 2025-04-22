@@ -7,7 +7,7 @@ const { lang = 'es' } = Astro.props;
 const t = translations[lang as SupportedLanguages];
 ---
 
-<section class="section section-main" id="inicio">
+<section class="section-main">
   <div class="content fade-in">
     <div class="names-container">
       <h1>{t['wedding.Luard'] || 'Luard'} <span class="y">{t['wedding.y'] || 'y'}</span> {t['wedding.Nataly'] || 'Nataly'}</h1>
@@ -30,20 +30,23 @@ const t = translations[lang as SupportedLanguages];
      -->
   </div>
   <a href="#info"><ScrollArrow /></a>
+  
 </section>
 
 <style>
   .section-main {
-    background-color: var(--background-color);
+    height: 100vh;
+    width: 100%;
     text-align: center;
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    
     padding: 2rem;
+    min-width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
     }
 
   .content {
@@ -123,7 +126,6 @@ const t = translations[lang as SupportedLanguages];
   .venue-line {
     height: 1px;
     width: 100%;
-    background-color: #000;
     margin: 1rem 0;
   }
 

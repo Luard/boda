@@ -6,7 +6,7 @@ const { lang = 'es' } = Astro.props;
 const t = translations[lang as SupportedLanguages];
 ---
 
-<section class="section section-dress-code" id="dress-code">
+<section class="section-dress-code">
   <div class="content fade-in">
     <h2>{t['dresscode.title']}</h2>
 
@@ -37,11 +37,15 @@ const t = translations[lang as SupportedLanguages];
 
 <style>
   .section-dress-code {
+    height: 100vh;
+    width: 100%;
+    min-width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    height: 100vh;
   }
 
   h2 {
@@ -177,11 +181,6 @@ const t = translations[lang as SupportedLanguages];
     .dress-code-description {
       font-size: 2rem;
       margin-top: 1.5rem;
-    }
-
-    .dress-icon .suit-icon {
-      max-width: 100px;
-      background-color: red;
     }
   }
 </style>

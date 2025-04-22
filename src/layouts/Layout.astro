@@ -19,9 +19,9 @@ const t = translations[lang as SupportedLanguages];
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <title>Boda Luard y Nataly</title>
-    <meta property="og:title" content="EL BODORRIO 2025 !" />
-    <meta property="og:description" content="Boda Luard y Nataly. Acompañanos en el inicio de nuestra nueva historia." />
+    <title>{t['meta.title'] || 'Boda Luard y Nataly'}</title>
+    <meta property="og:title" content={t['meta.og.title'] || 'EL BODORRIO 2025 !'}/>
+    <meta property="og:description" content={t['meta.og.description'] || 'Boda Luard y Nataly. Acompañanos en el inicio de nuestra nueva historia.'}/>
     <meta property="og:image" content="/images/couple-wedding.webp"/>
     <meta property="og:url" content="elbodorrio2025.com" />
     <meta property="og:type" content="website" />
@@ -46,26 +46,34 @@ const t = translations[lang as SupportedLanguages];
         <div class="envelope-seal" id="envelope-seal">
           <div class="seal-content">L&N</div>
         </div>
-
         <div class="envelope-outside" />
-        
-        <!--
-        <div class="envelope-content">
-          <h1>{t.invitation || 'Nuestra Boda'}</h1>
-          <p>{t.clickToOpen || 'Haz click para abrir'}</p>
-        </div>
-         -->
       </div>
     </div>
     <div id="invitation-content" class="invitation-content hidden">
-      <SectionMain lang={lang} />
-      <SectionIntro lang={lang} />
-      <SectionLocation lang={lang} />
-      <SectionSchedule lang={lang} />
-      <SectionDressCode lang={lang} />
-      <SectionNotes lang={lang} />
-      <SectionAccommodation lang={lang} />
-      <SectionRSVP lang={lang} />
+      <div class="section" id="main">
+        <SectionMain lang={lang} class="section"/>
+      </div>
+      <div class="section" id="intro">
+        <SectionIntro lang={lang} class="section"/>
+      </div>
+      <div class="section" id="info">
+        <SectionLocation lang={lang}/>
+      </div>
+      <div class="section" id="schedule">
+        <SectionSchedule lang={lang}/>
+      </div>
+      <div class="section" id="dress-code">
+        <SectionDressCode lang={lang}/>
+      </div>
+      <div class="section" id="notes">
+        <SectionNotes lang={lang}/>
+      </div>
+      <div class="section" id="accommodation">
+        <SectionAccommodation lang={lang}/>
+      </div>
+      <div class="section" id="rsvp">
+        <SectionRSVP lang={lang}/>
+      </div>
       <!--<slot /> -->
     </div>
   </body>
@@ -181,6 +189,11 @@ const t = translations[lang as SupportedLanguages];
                       document.body.style.height = 'auto';
                       document.body.style.overflowX = 'hidden';
                       invitationContent.style.overflowX = 'hidden';
+                      const navElement = document.querySelector('nav');
+                      if (navElement) {
+                        console.log("Entra aqui");
+                        navElement.classList.add('visible');
+                      }
                       
                       // Update URL hash if it wasn't already set
                       if (window.location.hash !== '#open') {
@@ -211,15 +224,9 @@ const t = translations[lang as SupportedLanguages];
         document.body.style.overflow = 'auto';
         document.body.style.overflowX = 'hidden';
         document.body.style.height = 'auto';
+        invitationContent.style.opacity = '1';
+        invitationContent.style.transform = 'translateY(0)';
         invitationContent.classList.add('paper-effect');
-        
-        const navElement = document.querySelector('nav');
-        if (navElement) {
-          navElement.style.position = 'sticky';
-          navElement.style.top = '0';
-          navElement.style.zIndex = '10000';
-        }
-
         // Add staggered animation to child elements
         const children = invitationContent.children;
         for (let i = 0; i < children.length; i++) {
@@ -1182,7 +1189,7 @@ const t = translations[lang as SupportedLanguages];
   .section {
     height: 100vh;
     scroll-snap-align: start;
-    padding: 20rem 5rem 20rem 5rem;
+    padding: 1rem 1.5rem 1rem 1.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
