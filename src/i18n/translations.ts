@@ -7,6 +7,9 @@ export const defaultLang = 'es';
 
 export const translations = {
   es: {
+    'wedding.Luard': 'Luard',
+    'wedding.y': 'y',
+    'wedding.Nataly': 'Nataly',
     'nav.home': 'Inicio',
     'nav.info': 'Información',
     'nav.rsvp': 'Confirmar',
