@@ -65,6 +65,7 @@ export const translations = {
     "others.divider.alt": "Divisor",
     "others.allergens.alt": "Alergias",
     "accommodation.title": "¿ Necesitas alojamiento ?",
+    "calendar.appointment": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Bodorrio%202025:%20Luard%20y%20Nataly&dates=20250911T173000/20250912T030000&location=Masia%20Piguillem,%20Carretera%20C-37,%20km.%20163,%2008572%20Sant%20Andreu%20de%20la%20Vola,%20Barcelona&details=¡Te%20esperamos%20en%20nuestra%20boda!",
   },
   ca: {
     'nav.home': 'Inici',
@@ -122,5 +123,6 @@ export const translations = {
     "others.divider.alt": "Divisor",
     "others.allergens.alt": "Al·lèrgies",
     "accommodation.title": "Necessites allotjament ?",
+    "calendar.appointment": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Bodorrio%202025:%20Luard%20i%20Nataly&dates=20250911T173000/20250912T030000&location=Masia%20Piguillem,%20Carretera%20C-37,%20km.%20163,%2008572%20Sant%20Andreu%20de%20la%20Vola,%20Barcelona&details=T'esperem%20a%20la%20nostra%20boda!",
   }
 };
