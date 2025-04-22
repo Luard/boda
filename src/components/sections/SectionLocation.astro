@@ -6,7 +6,7 @@ const { lang = 'es' } = Astro.props;
 const t = translations[lang as SupportedLanguages];
 ---
 
-<section class="section section2" id="info">
+<section class="section section-location" id="info">
   <div class="content fade-in">
     <h2>{t['info.title']}</h2>
     <div class="info-container">
@@ -83,8 +83,9 @@ const t = translations[lang as SupportedLanguages];
 </section>
 
 <style>
-  .section2 {
+  .section-location {
     background-color: white;
+    height: 100vh;
   }
 
   h2 {
@@ -164,6 +165,10 @@ const t = translations[lang as SupportedLanguages];
   }
 
   @media (max-width: 768px) {
+    .map-container {
+      display: none;
+    }
+
     .info-container {
       grid-template-columns: 1fr;
     }

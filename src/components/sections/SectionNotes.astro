@@ -6,7 +6,7 @@ const { lang = 'es' } = Astro.props;
 const t = translations[lang as SupportedLanguages];
 ---
 
-<section class="section section-others" id="otros">
+<section class="section section-notes" id="otros">
   <div class="content fade-in">
     <h2>{t['others.title']}</h2>
     <div class="info-card">
@@ -52,7 +52,7 @@ const t = translations[lang as SupportedLanguages];
     text-align: center;
   }
   
-  .section-others {
+  .section-notes {
     height: 100vh;
     display: flex;
     align-items: center;
@@ -82,8 +82,8 @@ const t = translations[lang as SupportedLanguages];
     justify-content: center;
   }
 
-  .divider svg {
-    width: 80%;
+  .divider {
+    width: 100%;
     height: 100%;
   }
 
@@ -110,16 +110,17 @@ const t = translations[lang as SupportedLanguages];
       overflow: hidden;
     }
     .message-text {
-      font-size: 1.2rem;
+      font-size: 1rem;
     }
 
     .allergy-icon {
-      width: 100px;
-      height: 100px;
+      display: none;
+      width: 1%;
+      height: 1%;
     }
     
-    .divider svg {
-      width: 100%;
+    .divider {
+      height: 10px;
     }
   }
 </style>
