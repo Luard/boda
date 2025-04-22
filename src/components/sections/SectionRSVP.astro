@@ -10,53 +10,17 @@ const t = translations[lang as SupportedLanguages];
   <h2>{t['rsvp.title'] || 'Confirma tu asistencia'}</h2>
   <div class="content fade-in">
     <div class="rsvp-container">
-      <div class="rsvp-form-container">
-        <h3>Confirma tu asistencia</h3>
-        <form class="rsvp-form" id="rsvp-form">
-          <div class="form-group">
-            <input type="text" id="name" name="name" placeholder="Nombre completo" required>
-          </div>
-          
-          <div class="form-group">
-            <input type="email" id="email" name="email" placeholder="Email" required>
-          </div>
-          
-          <div class="form-group">
-            <select id="attendance" name="attendance" required>
-              <option value="" disabled selected>¿Asistirás?</option>
-              <option value="yes">Sí, asistiré</option>
-              <option value="no">No podré asistir</option>
-            </select>
-          </div>
-          
-          <div class="form-group">
-            <textarea id="message" name="message" placeholder="Mensaje (opcional)"></textarea>
-          </div>
-          
-          <div class="form-group">
-            <button type="submit" class="submit-button">Confirmar</button>
-          </div>
-        </form>
+      <div class="rsvp-message">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScJytyjwJ_bnae-WGfksRCNYG9vF5E7xUBixPMTW9MZibUW8Q/viewform?usp=header" target="_blank" class="rsvp-button">
+          {t['rsvp.button'] || 'Confirmar asistencia'}
+        </a>
+      </div>
+      <div class="rsvp-message">
+        <p class="deadline-text">{t['rsvp.deadline'] || 'Agradeceríamos confirmación de asistencia antes del 1 de Julio. Gracias.'}</p>
       </div>
     </div>
   </div>
 </section>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('rsvp-form');
-    
-    form?.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      
-      // Aquí puedes agregar la lógica para enviar el formulario
-      // Por ejemplo, usando fetch para enviar a un endpoint
-      
-      alert('¡Gracias por confirmar tu asistencia!');
-      form.reset();
-    });
-  });
-</script>
 
 <style>
   h2 {
@@ -76,6 +40,7 @@ const t = translations[lang as SupportedLanguages];
     min-height: 100vh;
     overflow: hidden;
     text-align: center;
+    flex-direction: column;
   }
 
   .rsvp-container {
@@ -83,10 +48,75 @@ const t = translations[lang as SupportedLanguages];
     width: 100%;
     margin: 0 auto;
     text-align: center;
+    padding: 0 2rem;
   }
 
   .rsvp-message {
+    margin-top: 3rem;
     margin-bottom: 3rem;
+  }
+
+  .deadline-text {
+    font-family: 'Italiana', serif;
+    font-size: 1.8rem;
+    line-height: 1.6;
+    color: #333;
+    margin: 0 auto 2rem;
+    max-width: 600px;
+  }
+
+  .rsvp-button {
+    display: inline-block;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 1rem 2.5rem;
+    border-radius: 5px;
+    font-family: 'Italiana', serif;
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .rsvp-button:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .rsvp-button:active {
+    transform: translateY(-1px);
+  }
+
+  .rsvp-button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+  }
+
+  .rsvp-button:hover::after {
+    transform: translateX(100%);
+  }
+
+  @media (max-width: 768px) {
+    .deadline-text {
+      font-size: 1.4rem;
+    }
+
+    .rsvp-button {
+      padding: 0.8rem 2rem;
+      font-size: 1.2rem;
+    }
   }
 
   .script-text {
