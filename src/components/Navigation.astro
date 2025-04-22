@@ -118,22 +118,11 @@ const t = translations[lang as SupportedLanguages];
     const now = Date.now();
     if (now - lastScrollTime < 500) return;
     lastScrollTime = now;
-    
-    if (!isScrolling) {
-      isScrolling = true;
-      const nextIndex = e.deltaY > 0 ? currentSectionIndex + 1 : currentSectionIndex - 1;
-      
-      if (nextIndex >= 0 && nextIndex < sections.length) {
+    const nextIndex = e.deltaY > 0 ? currentSectionIndex + 1 : currentSectionIndex - 1;
+    if (nextIndex >= 0 && nextIndex < sections.length) {
         scrollToSection(nextIndex);
-      } else {
-        // Si estamos en los límites, permitir el scroll normal
-        isScrolling = false;
-      }
-
-      setTimeout(() => {
-        isScrolling = false;
-      }, 1000);
     }
+    
     e.preventDefault();
   }, { passive: false });
 
@@ -143,8 +132,6 @@ const t = translations[lang as SupportedLanguages];
   }, { passive: true });
 
   document.addEventListener('touchend', (e) => {
-    
-    
     touchEndY = e.changedTouches[0].screenY;
     const touchDiff = touchStartY - touchEndY;
     
