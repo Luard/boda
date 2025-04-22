@@ -15,12 +15,12 @@ jobs:
 
       - name: Set up Git
         run: |
-          git config --global user.name "TuNombre"
-          git config --global user.email "tucorreo@example.com"
+          git config --global user.name "Luard"
+          git config --global user.email "luard.developer@gmail.com"
 
       - name: Clone target repo
         run: |
-          git clone https://x-access-token:${{ secrets.TARGET_REPO_TOKEN }}@github.com/tuusuario/repositorioB.git target-repo
+          git clone https://x-access-token:${{ secrets.TARGET_REPO_TOKEN }}@github.com/Luard/boda-copy-cat.git target-repo
           rsync -av --delete --exclude='.git' ./ target-repo/
           cd target-repo
           git add .
