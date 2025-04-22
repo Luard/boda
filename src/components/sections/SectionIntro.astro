@@ -9,27 +9,27 @@ const t = translations[lang as SupportedLanguages];
 <section class="section section-intro" id="informacion">
   <div class="content fade-in">
     <div class="invitation-text">
-      <p>"Con mucha ilusión, queremos compartir con ustedes este día tan especial en nuestras vidas. Los invitamos a celebrar nuestro amor y a ser testigos del inicio de esta nueva etapa juntos. Su presencia hará de nuestra boda un momento aún más mágico. ¡Los esperamos con mucho cariño!"</p>
+      <p>{t['intro.invitation']}</p>
     </div>
     
-    <h3 class="countdown-heading">Prepárate, falta...</h3>
+    <h3 class="countdown-heading">{t['intro.countdown.heading']}</h3>
     
     <div class="countdown-container" id="countdown">
       <div class="countdown-item">
         <span class="countdown-number" id="days">000</span>
-        <span class="countdown-label">DÍAS</span>
+        <span class="countdown-label">{t['intro.countdown.days']}</span>
       </div>
       <div class="countdown-item">
         <span class="countdown-number" id="hours">00</span>
-        <span class="countdown-label">HORAS</span>
+        <span class="countdown-label">{t['intro.countdown.hours']}</span>
       </div>
       <div class="countdown-item">
         <span class="countdown-number" id="minutes">00</span>
-        <span class="countdown-label">MIN</span>
+        <span class="countdown-label">{t['intro.countdown.minutes']}</span>
       </div>
       <div class="countdown-item">
         <span class="countdown-number" id="seconds">00</span>
-        <span class="countdown-label">SEG</span>
+        <span class="countdown-label">{t['intro.countdown.seconds']}</span>
       </div>
     </div>
   </div>
@@ -111,7 +111,6 @@ const t = translations[lang as SupportedLanguages];
     margin-bottom: 2rem;
     color: var(--secondary-color);
     position: relative;
-    display: inline-block;
     font-weight: 400;
     letter-spacing: 1px;
   }

@@ -6,413 +6,158 @@ const { lang = 'es' } = Astro.props;
 const t = translations[lang as SupportedLanguages];
 ---
 
-<section class="section section-schedule" id="cronograma">
+<section class="section section-schedule" id="programa">
   <div class="content fade-in">
-    <h2>{t['schedule.title'] || 'Cronograma'}</h2>
+    <h2>{t['schedule.title']}</h2>
     
-    <div class="schedule-wrapper">
-      <div class="schedule-container">
-        <div class="schedule-item" data-event="ceremony">
-          <div class="schedule-icon">
-            <img src="/images/ring.webp" alt="Ceremonia" class="icon-image">
-          </div>
-          <div class="schedule-content">
-            <h3>Ceremonia</h3>
-            <p class="schedule-time">17:30</p>
-          </div>
-        </div>
-        
-        <div class="timeline-connector"></div>
-        
-        <div class="schedule-item" data-event="cocktail">
-          <div class="schedule-icon">
-            <img src="/images/food.png" alt="Aperitivo" class="icon-image">
-          </div>
-          <div class="schedule-content">
-            <h3>Aperitivo</h3>
-            <p class="schedule-time">19:00</p>
-          </div>
-        </div>
-        
-        <div class="timeline-connector"></div>
-        
-        <div class="schedule-item" data-event="dance">
-          <div class="schedule-icon">
-            <img src="/images/music.png" alt="Party" class="icon-image">
-          </div>
-          <div class="schedule-content">
-            <h3>Baile</h3>
-            <p class="schedule-time">23:00</p>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h3 class="event-time">17:30</h3>
+          <div class="event-details">
+            <h4 class="event-title">{t['schedule.ceremony.title']}</h4>
+            <p class="event-description">{t['schedule.ceremony.description']}</p>
           </div>
         </div>
       </div>
-      <!--
-      <div class="event-descriptions">
-        <div class="event-description" id="ceremony-description">
-          <h4>Ceremonia</h4>
-          <p>Un momento íntimo donde sellaremos nuestro amor con votos que perdurarán para siempre. La ceremonia tendrá lugar en un entorno natural rodeado de la belleza de la naturaleza, creando un ambiente mágico para este momento tan especial.</p>
-        </div>
-        
-        <div class="event-description" id="cocktail-description">
-          <h4>Aperitivo</h4>
-          <p>Disfruta de una selección de exquisitos bocados y bebidas mientras compartimos los primeros momentos de nuestra nueva vida juntos. Un tiempo para conversar, brindar y celebrar en un ambiente de elegancia y calidez.</p>
-        </div>
-        
-        <div class="event-description" id="dance-description">
-          <h4>Baile</h4>
-          <p>Cuando la noche avance, la música nos invitará a celebrar con alegría. Nuestro primer baile como matrimonio dará paso a una velada llena de ritmo y emoción donde compartiremos la felicidad de este día inolvidable.</p>
+      
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h3 class="event-time">19:30</h3>
+          <div class="event-details">
+            <h4 class="event-title">{t['schedule.cocktail.title']}</h4>
+            <p class="event-description">{t['schedule.cocktail.description']}</p>
+          </div>
         </div>
       </div>
-       -->
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h3 class="event-time">23:00</h3>
+          <div class="event-details">
+            <h4 class="event-title">{t['schedule.party.title']}</h4>
+            <p class="event-description">{t['schedule.party.description']}</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const scheduleItems = document.querySelectorAll('.schedule-item');
-    const descriptions = document.querySelectorAll('.event-description');
-    const scheduleContainer = document.querySelector('.schedule-container');
-    const scheduleWrapper = document.querySelector('.schedule-wrapper');
-    
-    // Hide all descriptions initially
-    descriptions.forEach(desc => {
-      desc.classList.remove('active');
-    });
-    
-    let activeItem = null;
-    
-    scheduleItems.forEach(item => {
-      item.addEventListener('click', () => {
-        const eventType = item.getAttribute('data-event');
-        const description = document.getElementById(`${eventType}-description`);
-        
-        // If clicking the same item that's already active, close it
-        if (item === activeItem) {
-          // Remove active classes
-          item.classList.remove('active');
-          if (description) {
-            description.classList.remove('active');
-          }
-          
-          // Reset the layout
-          scheduleWrapper.classList.remove('description-open');
-          activeItem = null;
-          return;
-        }
-        
-        // Otherwise, activate the clicked item
-        activeItem = item;
-        
-        // Remove active class from all items
-        scheduleItems.forEach(i => i.classList.remove('active'));
-        
-        // Add active class to clicked item
-        item.classList.add('active');
-        
-        // Hide all descriptions
-        descriptions.forEach(desc => {
-          desc.classList.remove('active');
-        });
-        
-        // Show the corresponding description
-        if (description) {
-          description.classList.add('active');
-          scheduleWrapper.classList.add('description-open');
-        }
-      });
-    });
-  });
-</script>
-
 <style>
-  .section {
-    
-  }
-
   .section-schedule {
-    /*background-color: #f5f5f2;*/
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background-color: var(--background-color);
+    padding: 4rem 2rem;
   }
 
   h2 {
-    font-size: 2.5rem;
-    margin-bottom: 4rem;
+    font-size: 3rem;
+    margin-bottom: 3rem;
     color: var(--secondary-color);
     text-align: center;
-    font-family: 'Better Saturday Personal Use', cursive;
   }
 
-  .schedule-wrapper {
-    display: flex;
-    gap: 2.5rem;
-    max-width: 90%;
-    margin: auto;
-    align-items: flex-start;
-    transition: all 0.4s ease;
-  }
-  
-  .schedule-wrapper.description-open .schedule-container {
-    width: 40%;
-    transform: translateX(-5%);
-  }
-  
-  .schedule-wrapper.description-open .event-descriptions {
-    width: 100%;
-  }
-
-  .schedule-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    transition: all 0.4s ease;
-    max-width: 100%;
-  }
-
-  .schedule-item {
-    display: flex;
-    align-items: center;
-    margin-top: 0.2rem;
-    margin-bottom: 0.2rem;
-    position: relative;
-    background-color: white;
-    border-radius: 12px;
-    padding: 2rem;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
-    cursor: pointer;
-    overflow: hidden;
-  }
-
-  .schedule-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  }
-
-  .schedule-item.active {
-    background-color: var(--primary-color);
-    color: white;
-  }
-
-  .schedule-item.active h3,
-  .schedule-item.active .schedule-time {
-    color: white;
-  }
-
-  .schedule-item.active .schedule-icon {
-    border-color: white;
-  }
-
-  .schedule-item.active .schedule-icon svg {
-    color: white;
-  }
-
-  .timeline-connector {
-    width: 2px;
-    height: 50px;
-    background-color: var(--secondary-color);
+  .timeline {
+    max-width: 800px;
+    margin: 0 auto;
     position: relative;
   }
 
-  .timeline-connector::before,
-  .timeline-connector::after {
+  .timeline::before {
     content: '';
     position: absolute;
-    left: 50%;
-    width: 8px;
-    height: 8px;
-    background-color: var(--secondary-color);
+    top: 0;
+    bottom: 0;
+    left: 120px;
+    width: 2px;
+    background-color: var(--primary-color);
+    opacity: 0.3;
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+  }
+
+  .timeline-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .timeline-content {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .event-time {
+    width: 120px;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    text-align: right;
+    padding-right: 2rem;
+    flex-shrink: 0;
+  }
+
+  .event-details {
+    position: relative;
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-left: 2rem;
+    flex-grow: 1;
+  }
+
+  .event-details::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 20px;
+    width: 20px;
+    height: 20px;
+    background-color: var(--primary-color);
     border-radius: 50%;
     transform: translateX(-50%);
   }
 
-  .timeline-connector::before {
-    top: 0;
-  }
-
-  .timeline-connector::after {
-    bottom: 0;
-  }
-
-  .schedule-icon {
-    width: 80px; /* Slightly smaller to give more room for text */
-    height: 80px;
-    min-width: 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 2rem; /* Slightly reduced to give more room for text */
-    background-color: #f5f5f2;
-    border-radius: 50%;
-    padding: 16px;
-    border: 1px solid var(--primary-color);
-    transition: all 0.3s ease;
-  }
-
-  .schedule-icon svg, .schedule-icon img {
-    width: 100%;
-    height: 100%;
+  .event-title {
+    font-size: 1.4rem;
     color: var(--secondary-color);
-    transition: all 0.3s ease;
-    object-fit: contain;
-  }
-
-  .icon-image {
-    max-width: 100%;
-    max-height: 100%;
-  }
-
-  .schedule-content {
-    flex: 1;
-    min-width: 200px; /* Aumentado para asegurar espacio suficiente */
-    padding-right: 1rem;
-  }
-
-  h3 {
-    font-size: 2.2rem;
-    margin-bottom: 0.8rem;
-    font-weight: 400;
-    color: var(--secondary-color);
-    font-family: 'Italiana', serif;
-    line-height: 1.3; /* Aumentado ligeramente */
-    transition: color 0.3s ease;
-    white-space: normal;
-    word-break: normal;
-    letter-spacing: 0.02em; /* Añadido para mejorar legibilidad */
-  }
-
-  .schedule-time {
-    font-size: 2rem; /* Back to original larger size */
-    color: var(--text-color);
-    font-family: 'Italiana', serif;
-    transition: color 0.3s ease;
-  }
-
-  .event-descriptions {
-    position: relative;
-    min-height: 300px;
-    transition: all 0.4s ease;
+    margin-bottom: 0.5rem;
   }
 
   .event-description {
-    background-color: white;
-    border-radius: 12px;
-    width: 300%;
-    max-width: 500px;
-    padding: 2.5rem;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    opacity: 0;
-    position: absolute;
-    visibility: hidden;
-    transform: translateY(15vh) translateX(80px);
-    transition: all 0.4s ease;
-    height: auto;
-  }
-
-  .event-description.active {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(15vh) translateX(80px);
-  }
-
-  .event-description h4 {
-    font-size: 2.2rem;
-    margin-bottom: 1.5rem;
-    color: var(--secondary-color);
-    font-family: 'Italiana', serif;
-  }
-
-  .event-description p {
-    font-size: 1.3rem;
-    line-height: 1.8;
+    font-size: 1.1rem;
+    line-height: 1.6;
     color: var(--text-color);
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-  }
-
-  @media (max-width: 1024px) {
-    .schedule-wrapper {
-      flex-direction: column;
-      min-height: auto;
-    }
-
-    .schedule-wrapper.description-open .schedule-container,
-    .schedule-container,
-    .event-descriptions {
-      width: 100%;
-      transform: none;
-    }
-    
-    .schedule-wrapper.description-open .schedule-container {
-      margin-bottom: 2rem;
-    }
-    
-    .event-descriptions {
-      position: relative;
-      min-height: 300px;
-      align-items: center;
-      justify-content: center;
-      display: flex;
-      min-height: 0;
-      margin-top: 1rem;
-    }
-
-    .event-description.active {
-      opacity: 1;
-      visibility: hidden;
-      transform: translateY(-50%) translateX(0);
-    }
-    
-    .schedule-item {
-      padding: 0.5rem;
-      margin-bottom: 0.1rem;
-      margin-top: 0.1rem;
-    }
   }
 
   @media (max-width: 768px) {
-    .section-schedule {
-      padding: 4rem 1.5rem;
+    .timeline::before {
+      left: 60px;
+    }
+
+    .event-time {
+      width: 60px;
+      font-size: 1.2rem;
+      padding-right: 1rem;
+    }
+
+    .event-details {
+      margin-left: 1.5rem;
+      padding: 1rem;
+    }
+
+    .event-title {
+      font-size: 1.2rem;
+    }
+
+    .event-description {
+      font-size: 1rem;
     }
 
     h2 {
-      font-size: 2.5rem;
-      margin-bottom: 3rem;
-    }
-
-    .schedule-icon {
-      width: 70px;
-      height: 70px;
-      min-width: 70px;
-      margin-right: 1.5rem;
-    }
-
-    h3 {
       font-size: 2rem;
-    }
-
-    .schedule-time {
-      font-size: 1.7rem;
-    }
-
-    .timeline-connector {
-      height: 40px;
-    }
-
-    .event-description h4 {
-      font-size: 1.8rem;
-    }
-
-    .event-description p {
-      font-size: 1.1rem;
-    }
-    
-    .event-description.active {
-      opacity: 1;
-      visibility: hidden;
+      margin-bottom: 2rem;
     }
   }
 </style>
