@@ -8,6 +8,7 @@ import SectionDressCode from '../components/sections/SectionDressCode.astro';
 import SectionOthers from '../components/sections/SectionOthers.astro';
 import SectionRSVP from '../components/sections/SectionRSVP.astro';
 import SectionLocation from '../components/sections/SectionLocation.astro';
+import SectionAccommodation from '../components/sections/SectionAccommodation.astro';
 
 type SupportedLanguages = keyof typeof translations;
 const { lang = 'es' } = Astro.props;
@@ -63,6 +64,7 @@ const t = translations[lang as SupportedLanguages];
       <SectionSchedule lang={lang} />
       <SectionDressCode lang={lang} />
       <SectionOthers lang={lang} />
+      <SectionAccommodation lang={lang} />
       <SectionRSVP lang={lang} />
       <!--<slot /> -->
     </div>
