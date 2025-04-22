@@ -8,36 +8,36 @@ const t = translations[lang as SupportedLanguages];
 
 <section class="section section-others" id="otros">
   <div class="content fade-in">
-    <h2>Tips & Notes</h2>
+    <h2>{t['others.title']}</h2>
     <div class="info-card">
       <div class="info-message">
         <p class="message-text">
-          Amamos a los más pequeños, pero en esta ocasión queremos que disfruten de una noche especial solo para adultos.
+          {t['others.children']}
         </p>
       </div>
     </div>
     <div class="divider">
-      <img src="/images/divider.svg" alt="Divisor" class="icon-image">
+      <img src="/images/divider.svg" alt={t['others.divider.alt']} class="icon-image">
     </div>
     <div class="info-card">
       <div class="info-message">
         <p class="message-text">
-          Queremos que disfrutes al máximo nuestra celebración. Si tienes alguna alergia o restricción alimentaria, avisanos para poder ofrecerte una opción adecuada.
+          {t['others.allergies']}
         </p>
       </div>
       <div class="allergy-icons">
         <div class="allergy-icon">
-          <img src="/images/allergens.webp" alt="Alergias" class="icon-image">
+          <img src="/images/allergens.webp" alt={t['others.allergens.alt']} class="icon-image">
         </div>
       </div>
     </div>
     <div class="divider">
-      <img src="/images/divider.svg" alt="Divisor" class="icon-image">
+      <img src="/images/divider.svg" alt={t['others.divider.alt']} class="icon-image">
     </div>
     <div class="info-card">
       <div class="info-message">
         <p class="message-text">
-          La Masia se encuentra en una zona fácilmente accesible en coche y dispone de parking privado.
+          {t['others.parking']}
         </p>
       </div>
     </div>

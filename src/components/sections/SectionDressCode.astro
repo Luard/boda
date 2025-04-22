@@ -8,25 +8,25 @@ const t = translations[lang as SupportedLanguages];
 
 <section class="section section-dress-code" id="dress-code">
   <div class="content fade-in">
-    <h2>Dress code</h2>
+    <h2>{t['dresscode.title']}</h2>
 
     <div class="dress-code-container">
       <div class="dress-code-icons">
         <div class="icon-row">
           <div class="icon-item">
             <div class="dress-icon">
-              <img src="/images/dress.svg" alt="Dress" />
+              <img src="/images/dress.svg" alt={t['dresscode.dress.alt']} />
             </div>
           </div>
           
           <div class="text-item">
-            <h3>Formal</h3>
-            <p class="dress-code-description">Usa tu mejor look!</p>
+            <h3>{t['dresscode.formal']}</h3>
+            <p class="dress-code-description">{t['dresscode.description']}</p>
           </div>
           
           <div class="icon-item">
             <div class="suit-icon">
-              <img src="/images/suit.svg" alt="Suit" />
+              <img src="/images/suit.svg" alt={t['dresscode.suit.alt']} />
             </div>
           </div>
         </div>
