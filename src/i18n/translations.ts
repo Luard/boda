@@ -3,8 +3,6 @@ export const languages = {
   ca: 'Català'
 };
 
-export const defaultLang = 'es';
-
 export const translations = {
   es: {
     'meta.title':'Boda Luard y Nataly',
