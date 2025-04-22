@@ -7,14 +7,9 @@ const t = translations[lang as SupportedLanguages];
 ---
 
 <section class="section section-rsvp" id="rsvp">
+  <h2>¡ Esperamos que puedas compartir con nosotros este momento tan especial !</h2>
   <div class="content fade-in">
     <div class="rsvp-container">
-      <div class="rsvp-message">
-        <p class="script-text">
-          Esperamos que puedas compartir con nosotros este momento tan especial
-        </p>
-      </div>
-      
       <div class="rsvp-form-container">
         <h3>Confirma tu asistencia</h3>
         <form class="rsvp-form" id="rsvp-form">
@@ -64,6 +59,13 @@ const t = translations[lang as SupportedLanguages];
 </script>
 
 <style>
+  h2 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    color: var(--secondary-color);
+    text-align: center;
+  }
+
   .section-rsvp {
     height: 100vh;
     display: flex;
