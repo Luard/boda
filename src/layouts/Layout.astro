@@ -7,6 +7,7 @@ import SectionSchedule from '../components/sections/SectionSchedule.astro';
 import SectionDressCode from '../components/sections/SectionDressCode.astro';
 import SectionOthers from '../components/sections/SectionOthers.astro';
 import SectionRSVP from '../components/sections/SectionRSVP.astro';
+import SectionLocation from '../components/sections/SectionLocation.astro';
 
 type SupportedLanguages = keyof typeof translations;
 const { lang = 'es' } = Astro.props;
@@ -58,6 +59,7 @@ const t = translations[lang as SupportedLanguages];
     <div id="invitation-content" class="invitation-content hidden">
       <SectionMain lang={lang} />
       <SectionIntro lang={lang} />
+      <SectionLocation lang={lang} />
       <SectionSchedule lang={lang} />
       <SectionDressCode lang={lang} />
       <SectionOthers lang={lang} />
